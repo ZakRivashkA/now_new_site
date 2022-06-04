@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<h1 align="center">Hello Droids!!!</h1>
+<h2 style="color:yellow">{{ error }}</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" name="droid">
+    <button>ok</button>
+</form>
+{% for d in droid %}
+<div style="border:1px solid red;">
+    <p>{{ d.name }}</p>
+    <p>{{ d.master }}</p>
+    <img src="{{ d.image.url }}" alt="">
+</div>
+{% endfor %}
+{% for i in droids %}
+<div style="border:1px solid red;">
+    <p>{{ i.name }}</p>
+    <p>{{ i.master }}</p>
+    <img src="{{ i.image.url }}" alt="">
+</div>
+{% endfor %}
+<script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

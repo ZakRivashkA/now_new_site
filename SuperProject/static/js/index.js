@@ -1,0 +1,1 @@
+//alert('hello, world! i am droid Droid_1.')

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Less_FORM</title>
+</head>
+<body>
+<h1>Cats</h1>
+<form action="{% url 'new_site:category_form' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="Category"><br><br>
+    {% for k in categoris %}
+    {{ k }}<br>
+    {% endfor %}
+    <br>
+    <button>OK</button>
+    <br>
+</form>
+<h1>Prods</h1>
+<form action="{% url 'new_site:product_form' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="product_title"><br>
+    <input type="text" name="product_description"><br>
+    <input type="number" name="product_price"><br>
+    <input type="file" name="product_image"><br>
+    {% for k in categoris %}
+    <input type="radio" name="categories" value="{{ k.name }}">{{ k.name }}<br>
+    {% endfor %}
+    <br>
+    {% for k in prods %}
+    {{ k }}<br>
+    {% endfor %}
+    <br>
+    <button>OK</button>
+</form>
+<h1>Shops</h1>
+<form action="{% url 'new_site:shop_form' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="name"><br>
+    <input type="text" name="city"><br>
+    <input type="text" name="street"><br>
+    {% for i in prods %}
+    <input type="checkbox" name="prods" value="{{ i.title }}">{{ i.title }}<br>
+    {% endfor %}
+    <button>OK</button>
+</form>
+<h1>Форма</h1>
+<form action="{% url 'new_site:form_category' %}" method="POST">
+    {% csrf_token %}
+    {{ errors }}
+    {{ form.as_p }}
+    <button>OKey</button>
+</form>
+</body>
+</html>

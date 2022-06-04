@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'new_site:form_category' %}" method="POST">
+    {% csrf_token %}
+    {% for i in form %}
+    <span>{{ i.name }}</span><span>{{ i }}</span><strong style="color: red">{{ i.errors.as_text }}</strong><br>
+    {% endfor %}
+    <button>OK</button>
+</form>
+</body>
+</html>
